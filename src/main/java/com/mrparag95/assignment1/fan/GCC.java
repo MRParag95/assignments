@@ -4,13 +4,12 @@ public class GCC extends Fan {
     private boolean isOn = false;
     private int currentSpeed = 0;
 
-    public GCC(boolean isOn, int currentSpeed) {
+    public GCC(boolean isOn, int currentSpeed) throws Exception {
         this.isOn = isOn;
         if (!isOn && currentSpeed != 0) {
-            System.out.println("Speed can't be grater or less then 0 while Fan is turned off. Setting the Speed to 0.");
-            this.currentSpeed = 0;
+            throw new Exception("Speed can't be set while Fan is turned off.");
         } else {
-            this.currentSpeed = currentSpeed;
+            this.setCurrentSpeed(currentSpeed);
         }
     }
 
@@ -53,7 +52,7 @@ public class GCC extends Fan {
     }
 
     @Override
-    void speedUp() {
+    public void speedUp() {
         if (!this.isOn()) {
             System.out.println("Please turn your " + this.getClass().getName() + " first");
         } else {
@@ -67,7 +66,7 @@ public class GCC extends Fan {
     }
 
     @Override
-    void speedDown() {
+    public void speedDown() {
         if (!this.isOn()) {
             System.out.println("Please turn your " + this.getClass().getName() + " first");
         } else {

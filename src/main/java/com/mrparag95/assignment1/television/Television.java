@@ -1,4 +1,6 @@
-package com.mrparag95.assignment1;
+package com.mrparag95.assignment1.television;
+
+import com.mrparag95.assignment1.ElectricDevice;
 
 public abstract class Television implements ElectricDevice {
     private int channelId;
